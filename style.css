@@ -1,0 +1,143 @@
+/* Configuración global para todos los elementos */
+* {
+    box-sizing: border-box;
+    /* Establece el modelo de caja como border-box para que el padding y el borde no afecten el tamaño total del elemento */
+    margin: 0;
+    /* Elimina el margen por defecto */
+    padding: 0;
+    /* Elimina el padding por defecto */
+}
+
+/* Estilos generales para el cuerpo del documento HTML */
+body {
+    font-family: Arial, sans-serif;
+    /* Define la fuente principal para el cuerpo del documento */
+    background-color: #f1f1f1;
+    /* Establece el color de fondo del cuerpo */
+    display: flex;
+    /* Utiliza un contenedor flexible para alinear y distribuir elementos internos */
+    justify-content: center;
+    /* Centra horizontalmente los elementos dentro del cuerpo */
+    align-items: center;
+    /* Centra verticalmente los elementos dentro del cuerpo */
+    min-height: 100vh;
+    /* Establece una altura mínima del cuerpo igual al 100% de la altura de la ventana */
+}
+
+/* Estilos para la galería de imágenes */
+.gallery {
+    display: flex;
+    /* Utiliza un contenedor flexible para alinear y distribuir elementos internos */
+    flex-wrap: wrap;
+    /* Permite que los elementos internos se envuelvan en varias líneas si no caben en una sola línea */
+    justify-content: center;
+    /* Centra horizontalmente los elementos dentro de la galería */
+    gap: 15px;
+    /* Establece un espacio entre los elementos de la galería */
+    max-width: 800px;
+    /* Establece el ancho máximo de la galería */
+    margin: 20px;
+    /* Establece un margen alrededor de la galería */
+}
+
+/* Estilos para cada elemento individual de la galería */
+.gallery-item {
+    position: relative;
+    /* Establece la posición relativa para permitir posicionamiento absoluto de elementos hijos */
+    overflow: hidden;
+    /* Oculta cualquier contenido que sobresalga del elemento */
+    border-radius: 8px;
+    /* Agrega bordes redondeados a los elementos de la galería */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* El valor 0 representa el desplazamiento horizontal, lo que significa que la sombra no se desplaza a la izquierda ni a la derecha.
+El valor 4px representa el desplazamiento vertical, lo que indica que la sombra se desplaza hacia abajo 4 píxeles desde el elemento que la genera.
+El valor 8px representa el desenfoque de la sombra, que es la cantidad de difuminación que tiene la sombra.
+rgba(0, 0, 0, 0.1) especifica el color de la sombra. En este caso, es un color negro (0, 0, 0) con una opacidad del 0.1. */
+    /* Agrega una sombra suave a los elementos de la galería */
+    flex: 0 0 calc(33.33% - 15px);
+    /* Establece el tamaño de cada elemento para que ocupe aproximadamente el 33.33% del contenedor, ajusta según necesidades */
+    transition: transform 0.3s ease-in-out;
+    /* Agrega una transición suave al efecto de escala */
+}
+/* flex-basis: calc(33.33% - 15px), establece el tamaño base del elemento en un 33.33% del contenedor menos 15px de espacio entre elementos.
+transform: scale(1.1); en la regla .gallery-item:hover:
+
+transform: Aplica transformaciones a un elemento.
+scale(1.1): Aumenta el tamaño del elemento al 110% de su tamaño original. Esto crea un efecto de escala cuando se pasa el ratón sobre un elemento de la galería.
+.overlay y .gallery-item:hover .overlay:
+
+La clase .overlay define estilos para una superposición semitransparente que se coloca sobre cada elemento de la galería.
+.gallery-item:hover .overlay selecciona la superposición específica que está dentro del elemento de la galería cuando se pasa el ratón sobre él.
+opacity: 0 en .overlay y opacity: 1; en .gallery-item:hover .overlay establecen la opacidad de la superposición, haciendo que inicialmente sea transparente y luego completamente visible al pasar el ratón.
+.overlay h2 y .overlay p:
+
+Establecen estilos específicos para los elementos h2 y p dentro de la superposición.
+.overlay h2 establece un margen inferior y tamaño de fuente para los títulos.
+.overlay p establece el tamaño de fuente para los párrafos dentro de la superposición. */
+
+/* Efecto de escala al pasar el ratón sobre un elemento de la galería */
+.gallery-item:hover {
+    transform: scale(1.1);
+    /* Escala el elemento al 110% cuando se pasa el ratón sobre él */
+}
+
+/* Estilos para las imágenes dentro de los elementos de la galería */
+.gallery-item img {
+    width: 100%;
+    /* Establece el ancho de la imagen al 100% del contenedor */
+    height: auto;
+    /* Mantiene la proporción original de la imagen ajustando automáticamente la altura */
+    display: block;
+    /* Hace que la imagen sea un bloque para manejar márgenes correctamente */
+    border-radius: 8px;
+    /* Agrega bordes redondeados a las imágenes */
+}
+
+/* Estilos para la superposición de texto en los elementos de la galería */
+.overlay {
+    position: absolute;
+    /* Establece la posición absoluta para superponer el contenido en el elemento padre */
+    top: 0;
+    /* Coloca la superposición en la parte superior del elemento padre */
+    left: 0;
+    /* Coloca la superposición en la parte izquierda del elemento padre */
+    width: 100%;
+    /* Establece el ancho al 100% del elemento padre */
+    height: 100%;
+    /* Establece la altura al 100% del elemento padre */
+    background: rgba(0, 0, 0, 0.6);
+    /* Fondo semitransparente oscuro para la superposición */
+    color: #fff;
+    /* Color de texto blanco para la superposición */
+    display: flex;
+    /* Utiliza un contenedor flexible para alinear y distribuir elementos internos */
+    flex-direction: column;
+    /* Apila los elementos internos verticalmente */
+    justify-content: center;
+    /* Centra verticalmente los elementos dentro de la superposición */
+    align-items: center;
+    /* Centra horizontalmente los elementos dentro de la superposición */
+    opacity: 0;
+    /* Hace que la superposición sea inicialmente transparente */
+    transition: opacity 0.3s ease-in-out;
+    /* Agrega una transición suave a la opacidad */
+}
+
+/* Efecto de opacidad al pasar el ratón sobre un elemento de la galería */
+.gallery-item:hover .overlay {
+    opacity: 1;
+    /* Hace que la superposición sea visible cuando se pasa el ratón sobre el elemento de la galería */
+}
+
+/* Estilos para los elementos de texto dentro de la superposición */
+.overlay h2 {
+    margin-bottom: 10px;
+    /* Agrega un margen inferior al título */
+    font-size: 18px;
+    /* Establece el tamaño de fuente para el título */
+}
+
+.overlay p {
+    font-size: 14px;
+    /* Establece el tamaño de fuente para el párrafo dentro de la superposición */
+}
